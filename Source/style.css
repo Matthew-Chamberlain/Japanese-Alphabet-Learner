@@ -1,0 +1,109 @@
+html{
+    font-size: 10px;
+}
+
+body{
+    background-color: #1f283a;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+}
+
+.title{
+    color: white;
+    font-size: 15rem;
+    padding-top: 5rem;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.buttonHolder{
+    display: flex;
+    flex-direction: row;
+    padding: 3%;
+    padding-bottom: 2rem;
+    justify-content: space-between;
+    flex: 0;
+}
+
+.buttonHolder div{
+    width: 4rem;
+}
+
+.buttonHolder button{
+    font-weight: bold;
+    font-size: 20rem;
+    border: solid;
+    border-radius: 1rem;
+    border-color: white;
+    background-color: #c9c9c9;
+    padding: 5rem;
+    box-shadow: 0px 2rem 0px 0px #858585
+}
+
+.label{
+    text-align: center;
+    font-weight: bold;
+    font-size: 4rem;
+    margin-top: -7rem;
+}
+
+.checkboxHolder{
+    display: flex;
+    flex-direction: row;
+    flex: 0;
+    margin-top: -3rem;
+    padding-bottom: 3rem;
+}
+
+.checkboxHolder button{
+    flex: 1;
+    border: solid;
+    border-radius: 1rem;
+    border-color: white;
+    background-color: #c9c9c9;
+    font-weight: bold;
+    font-size: 1.5rem;
+    width: 15rem;
+    padding: 2rem;
+    box-shadow: 0px 1.5rem 0px 0px #858585
+}
+
+.checkboxHolder div{
+    width: 10rem;
+}
+
+.startButton{
+    border: solid;
+    border-radius: 1rem;
+    border-color: white;
+    background-color: #c9c9c9;
+    font-weight: bold;
+    font-size: 1.5rem;
+    width: 65rem;
+    padding: 2rem;
+    box-shadow: 0px 1.5rem 0px 0px #858585
+}
+
+.infoText{
+    color:  white;
+    font-size: 3rem;
+    font-weight: 500;
+    display: none;
+}
+
+button:hover{
+    background-color: #bababa;
+}
+
+button:active{
+    transform: translateY(0.7rem);
+    box-shadow: 0rem 1rem 0px 0px #454545;
+}
+
+
