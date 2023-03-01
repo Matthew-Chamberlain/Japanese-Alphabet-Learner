@@ -4,7 +4,7 @@ html{
 
 body{
     background-color: #1f283a;
-    overflow: hidden;
+    /*overflow: hidden;*/
     text-align: center;
     align-items: center;
 }
@@ -20,6 +20,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    text-align: center;
 }
 
 .buttonHolder{
@@ -104,6 +105,19 @@ button:hover{
 button:active{
     transform: translateY(0.7rem);
     box-shadow: 0rem 1rem 0px 0px #454545;
+}
+
+input
+{
+    background-color: #1f283a;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1rem solid white;
+    text-align: center;
+    color: white;
+    font-size: 5rem;
+    width: 25rem;
 }
 
 

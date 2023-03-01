@@ -2,35 +2,43 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Japanese Alphabet Learner</title>
     
 </head>
-    <body>
-        <div class="title">Japanese Alphabet Learner</div>
-        <div class="container" style="display: none;">
+    <body onload="mapLoader()">
+        <div id = "mainTitle" class="title" >Japanese Alphabet Learner</div>
+        <div id = "mainScreen" class="container" >
             <div class="buttonHolder">
-                <button>あ<br><p class="label">Hirigana</p></button>
+                <button id="Hirigana" onclick="buttonManager(this.id)">あ<br><p class="label">Hirigana</p></button>
                 <div></div>
-                <button>シ<br><p class="label">Katakana</p></button>
+                <button id="Katakana" onclick="buttonManager(this.id)">シ<br><p class="label">Katakana</p></button>
             </div>
             <div style="height: 5rem;"></div>
             <div class="checkboxHolder">
-                <button>Infinite</button>
+                <button id="Infinite" onclick="buttonManager(this.id)">Infinite</button>
                 <div></div>
-                <button>Time Trial</button>
+                <button id="OneLife" onclick="buttonManager(this.id)">One Life</button>
                 <div></div>
-                <button>One Life</button>
+                <button id="Dakuon" onclick="buttonManager(this.id)">Dakuon</button>
             </div>
-            <button class="startButton">Start Test</button>
+            <button class="startButton" id="StartButton" onclick="buttonManager(this.id)">Start Test</button>
             <p class="infoText">See how many of the Hirigana Characters you know</p>
         </div>
 
-        
-        <div class="container">
-
+        <div id = "testTitle" class="title" style="display: none;">Hirigana Test</div>
+        <div id = "testScreen" class="container" style="display: none;">
+            <div>
+                <div style="font-size: 5rem; font-weight: bolder; padding: 4rem; color: white;">Score: 0/46</div>
+                <div style="font-size: 30rem; font-weight: bolder; margin-top: -8rem; color: white;">あ</div>
+                <form onsubmit="return false;" style="margin-top: -8rem;">
+                    <input name="guess" type="text" autocomplete="off" onblur="this.focus()" autofocus/>
+                    <input type="submit" hidden>
+                </form>
+            </div>
         </div>
     </body>
 </html>
