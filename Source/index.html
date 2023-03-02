@@ -9,35 +9,35 @@
     <title>Japanese Alphabet Learner</title>
     
 </head>
-    <body onload="mapLoader()">
-        <div id = "mainTitle" class="title" >Japanese Alphabet Learner</div>
+    <body>
+        <div id = "title" class="title" >Japanese Alphabet Learner</div>
         <div id = "mainScreen" class="container" >
             <div class="buttonHolder">
-                <button id="Hirigana" onclick="buttonManager(this.id)">あ<br><p class="label">Hirigana</p></button>
+                <button id="Hirigana" onclick="onClick(this.id)" onmouseover="document.getElementById('infoText').innerHTML = 'See how many of the Hirigana Characters you know';" onmouseleave="document.getElementById('infoText').innerHTML =''">あ<br><p class="label">Hirigana</p></button>
                 <div></div>
-                <button id="Katakana" onclick="buttonManager(this.id)">シ<br><p class="label">Katakana</p></button>
+                <button id="Katakana" onclick="onClick(this.id)" onmouseover="document.getElementById('infoText').innerHTML = 'See how many of the Katakana Characters you know';" onmouseleave="document.getElementById('infoText').innerHTML =''">シ<br><p class="label">Katakana</p></button>
             </div>
             <div style="height: 5rem;"></div>
             <div class="checkboxHolder">
-                <button id="Infinite" onclick="buttonManager(this.id)">Infinite</button>
+                <button id="Infinite" onclick="onClick(this.id)" onmouseover="document.getElementById('infoText').innerHTML = 'Keep Going for as long as you want';" onmouseleave="document.getElementById('infoText').innerHTML =''">Infinite</button>
                 <div></div>
-                <button id="OneLife" onclick="buttonManager(this.id)">One Life</button>
+                <button id="OneLife" onclick="onClick(this.id)" onmouseover="document.getElementById('infoText').innerHTML = 'See how many correct answers you can get before making a mistake';" onmouseleave="document.getElementById('infoText').innerHTML =''">One Life</button>
                 <div></div>
-                <button id="Dakuon" onclick="buttonManager(this.id)">Dakuon</button>
+                <button id="Dakuon" onclick="onClick(this.id)" onmouseover="document.getElementById('infoText').innerHTML = 'Add Dakuon characters to the test';" onmouseleave="document.getElementById('infoText').innerHTML =''">Dakuon</button>
             </div>
-            <button class="startButton" id="StartButton" onclick="buttonManager(this.id)">Start Test</button>
-            <p class="infoText">See how many of the Hirigana Characters you know</p>
+            <button class="startButton" id="StartButton" onclick="onClick(this.id)">Start Test</button>
+            <p id = "infoText" class="infoText"></p>
         </div>
-
-        <div id = "testTitle" class="title" style="display: none;">Hirigana Test</div>
         <div id = "testScreen" class="container" style="display: none;">
             <div>
-                <div style="font-size: 5rem; font-weight: bolder; padding: 4rem; color: white;">Score: 0/46</div>
-                <div style="font-size: 30rem; font-weight: bolder; margin-top: -8rem; color: white;">あ</div>
-                <form onsubmit="return false;" style="margin-top: -8rem;">
+                <div id = "scoreText" style="font-size: 5rem; font-weight: bolder; padding: 4rem; color: white;"></div>
+                <div id = "characterText" style="font-size: 30rem; font-weight: bolder; margin-top: -8rem; color: white;"></div>
+                <form onsubmit= "checkAnswer(); return false;" id ="userInput" style="margin-top: -8rem;">
                     <input name="guess" type="text" autocomplete="off" onblur="this.focus()" autofocus/>
                     <input type="submit" hidden>
                 </form>
+                <div id ="correctText" class="infoText"></div>
+                <button id = "exitButton" class="startButton" onclick="onClick(this.id);" onmouseover="document.getElementById('infoText').innerHTML = 'Click to exit early';" onmouseleave="document.getElementById('infoText').innerHTML ='';">Exit Quiz</button>
             </div>
         </div>
     </body>

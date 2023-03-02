@@ -1,192 +1,326 @@
-const hirigana = new Map();
-const katakana = new Map();
+const alphabet = new Map();
 var infinite = false;
 var oneLife = false;
 var selectedAlphabet;
 var dakuon = false;
+var userInput;
+var currentCharacter;
+var score = 0;
+var maxScore;
 
-function mapLoader()
+function loadHirigana()
 {
-    console.log("Maps Loaded");
+    alphabet.set("あ","a");
+    alphabet.set("い","i");
+    alphabet.set("う","u");
+    alphabet.set("え","e");
+    alphabet.set("お","o");
 
-    hirigana.set("あ","a");
-    hirigana.set("い","i");
-    hirigana.set("う","u");
-    hirigana.set("え","e");
-    hirigana.set("お","o");
+    alphabet.set("か","ka");
+    alphabet.set("き","ki");
+    alphabet.set("く","ku");
+    alphabet.set("け","ke");
+    alphabet.set("こ","ko");
 
-    hirigana.set("か","ka");
-    hirigana.set("き","ki");
-    hirigana.set("く","ku");
-    hirigana.set("け","ke");
-    hirigana.set("こ","ko");
+    alphabet.set("さ","sa");
+    alphabet.set("し","shi");
+    alphabet.set("す","su");
+    alphabet.set("せ","se");
+    alphabet.set("そ","so");
 
-    hirigana.set("さ","sa");
-    hirigana.set("し","shi");
-    hirigana.set("す","su");
-    hirigana.set("せ","se");
-    hirigana.set("そ","so");
+    alphabet.set("た","ta");
+    alphabet.set("ち","chi");
+    alphabet.set("つ","tsu");
+    alphabet.set("て","te");
+    alphabet.set("と","to");
 
-    hirigana.set("た","ta");
-    hirigana.set("ち","chi");
-    hirigana.set("つ","tsu");
-    hirigana.set("て","te");
-    hirigana.set("と","to");
+    alphabet.set("な","na");
+    alphabet.set("に","ni");
+    alphabet.set("ぬ","nu");
+    alphabet.set("ね","ne");
+    alphabet.set("の","no");
 
-    hirigana.set("な","na");
-    hirigana.set("に","ni");
-    hirigana.set("ぬ","nu");
-    hirigana.set("ね","ne");
-    hirigana.set("の","no");
+    alphabet.set("は","ha");
+    alphabet.set("ひ","hi");
+    alphabet.set("ふ","fu");
+    alphabet.set("へ","he");
+    alphabet.set("ほ","ho");
 
-    hirigana.set("は","ha");
-    hirigana.set("ひ","hi");
-    hirigana.set("ふ","fu");
-    hirigana.set("へ","he");
-    hirigana.set("ほ","ho");
+    alphabet.set("ま","ma");
+    alphabet.set("み","mi");
+    alphabet.set("む","mu");
+    alphabet.set("め","me");
+    alphabet.set("も","mo");
 
-    hirigana.set("ま","ma");
-    hirigana.set("み","mi");
-    hirigana.set("む","mu");
-    hirigana.set("め","me");
-    hirigana.set("も","mo");
+    alphabet.set("ら","ra");
+    alphabet.set("り","ri");
+    alphabet.set("る","ru");
+    alphabet.set("れ","re");
+    alphabet.set("ろ","ro");
 
-    hirigana.set("ら","ra");
-    hirigana.set("り","ri");
-    hirigana.set("る","ru");
-    hirigana.set("れ","re");
-    hirigana.set("ろ","ro");
+    alphabet.set("や","ya");
+    alphabet.set("ゆ","yu");
+    alphabet.set("よ","yo");
 
-    hirigana.set("や","ya");
-    hirigana.set("ゆ","yu");
-    hirigana.set("よ","yo");
+    alphabet.set("わ","wa");
+    alphabet.set("を","wo");
 
-    hirigana.set("わ","wa");
-    hirigana.set("を","wo");
+    alphabet.set("ん","n");
 
-    hirigana.set("ん","n");
+    if(dakuon)
+    {
+        alphabet.set("が","ga");
+        alphabet.set("ぎ","gi");
+        alphabet.set("ぐ","gu");
+        alphabet.set("げ","ge");
+        alphabet.set("ご","go");
 
-    katakana.set("ア","a");
-    katakana.set("イ","i");
-    katakana.set("ウ","u");
-    katakana.set("エ","e");
-    katakana.set("オ","o");
+        alphabet.set("ざ","za");
+        alphabet.set("じ","ji");
+        alphabet.set("ず","zu");
+        alphabet.set("ぜ","ze");
+        alphabet.set("ぞ","zo");
 
-    katakana.set("カ","ka");
-    katakana.set("キ","ki");
-    katakana.set("ク","ku");
-    katakana.set("ケ","ke");
-    katakana.set("コ","ko");
+        alphabet.set("だ","da");
+        alphabet.set("ぢ","ji");
+        alphabet.set("づ","zu");
+        alphabet.set("で","de");
+        alphabet.set("ど","do");
 
-    katakana.set("サ","sa");
-    katakana.set("シ","shi");
-    katakana.set("ス","su");
-    katakana.set("セ","se");
-    katakana.set("ソ","so");
+        alphabet.set("ば","ba");
+        alphabet.set("び","bi");
+        alphabet.set("ぶ","bu");
+        alphabet.set("べ","be");
+        alphabet.set("ぼ","bo");
 
-    katakana.set("タ","ta");
-    katakana.set("チ","chi");
-    katakana.set("ツ","tsu");
-    katakana.set("テ","te");
-    katakana.set("ト","to");
-
-    katakana.set("ナ","na");
-    katakana.set("ニ","ni");
-    katakana.set("ヌ","nu");
-    katakana.set("ネ","ne");
-    katakana.set("ノ","no");
-
-    katakana.set("ハ","ha");
-    katakana.set("ヒ","hi");
-    katakana.set("フ","fu");
-    katakana.set("ヘ","he");
-    katakana.set("ホ","ho");
-
-    katakana.set("マ","ma");
-    katakana.set("ミ","mi");
-    katakana.set("ム","mu");
-    katakana.set("メ","me");
-    katakana.set("モ","mo");
-    
-    katakana.set("ラ","ra");
-    katakana.set("リ","ri");
-    katakana.set("ル","ru");
-    katakana.set("レ","re");
-    katakana.set("ロ","ro");
-
-    katakana.set("ヤ","ya");
-    katakana.set("ユ","yu");
-    katakana.set("ヨ","yo");
-
-    katakana.set("ワ","wa");
-    katakana.set("ヲ","wo");
-
-    katakana.set("ン","n");
+        alphabet.set("ぱ","pa");
+        alphabet.set("ぴ","pi");
+        alphabet.set("ぷ","pu");
+        alphabet.set("ぺ","pe");
+        alphabet.set("ぽ","po");
+    }
+    console.log(alphabet.size);
 }
 
-function buttonManager(button)
+function loadKatakana()
+{
+    alphabet.set("ア","a");
+    alphabet.set("イ","i");
+    alphabet.set("ウ","u");
+    alphabet.set("エ","e");
+    alphabet.set("オ","o");
+
+    alphabet.set("カ","ka");
+    alphabet.set("キ","ki");
+    alphabet.set("ク","ku");
+    alphabet.set("ケ","ke");
+    alphabet.set("コ","ko");
+
+    alphabet.set("サ","sa");
+    alphabet.set("シ","shi");
+    alphabet.set("ス","su");
+    alphabet.set("セ","se");
+    alphabet.set("ソ","so");
+
+    alphabet.set("タ","ta");
+    alphabet.set("チ","chi");
+    alphabet.set("ツ","tsu");
+    alphabet.set("テ","te");
+    alphabet.set("ト","to");
+
+    alphabet.set("ナ","na");
+    alphabet.set("ニ","ni");
+    alphabet.set("ヌ","nu");
+    alphabet.set("ネ","ne");
+    alphabet.set("ノ","no");
+
+    alphabet.set("ハ","ha");
+    alphabet.set("ヒ","hi");
+    alphabet.set("フ","fu");
+    alphabet.set("ヘ","he");
+    alphabet.set("ホ","ho");
+
+    alphabet.set("マ","ma");
+    alphabet.set("ミ","mi");
+    alphabet.set("ム","mu");
+    alphabet.set("メ","me");
+    alphabet.set("モ","mo");
+    
+    alphabet.set("ラ","ra");
+    alphabet.set("リ","ri");
+    alphabet.set("ル","ru");
+    alphabet.set("レ","re");
+    alphabet.set("ロ","ro");
+
+    alphabet.set("ヤ","ya");
+    alphabet.set("ユ","yu");
+    alphabet.set("ヨ","yo");
+
+    alphabet.set("ワ","wa");
+    alphabet.set("ヲ","wo");
+
+    alphabet.set("ン","n");
+
+    if(dakuon)
+    {
+        alphabet.set("ガ","ga");
+        alphabet.set("ギ","gi");
+        alphabet.set("グ","gu");
+        alphabet.set("ゲ","ge");
+        alphabet.set("ゴ","go");
+
+        alphabet.set("ザ","za");
+        alphabet.set("ジ","ji");
+        alphabet.set("ズ","zu");
+        alphabet.set("ゼ","ze");
+        alphabet.set("ゾ","zo");
+
+        alphabet.set("ダ","da");
+        alphabet.set("ヂ","ji");
+        alphabet.set("ヅ","zu");  
+        alphabet.set("デ","de");
+        alphabet.set("ド","do");
+
+        alphabet.set("バ","ba");
+        alphabet.set("ビ","bi");
+        alphabet.set("ブ","bu");
+        alphabet.set("ベ","be");
+        alphabet.set("ボ","bo");
+
+        alphabet.set("パ","pa");
+        alphabet.set("ピ","pi");
+        alphabet.set("プ","pu");
+        alphabet.set("ペ","pe");
+        alphabet.set("ポ","po");
+    }
+}
+
+function checkAnswer()
+{
+    let answer = document.querySelector('input').value;
+    console.log(answer);
+    console.log(alphabet.get(currentCharacter));
+    if(answer == alphabet.get(currentCharacter))
+    {
+        score++;
+        document.getElementById("scoreText").innerHTML = "Score: "+ score +"/" + maxScore;
+        document.getElementById("correctText").innerHTML = "";
+    }
+    else
+    {
+        if(oneLife){location.reload();}
+        document.getElementById("correctText").innerHTML = "The correct answer was " + alphabet.get(currentCharacter);
+    }
+    alphabet.delete(currentCharacter);
+
+    if(alphabet.size == 0 && infinite)
+    {
+        if(selectedAlphabet == "Hirigana")
+        {
+            loadHirigana();
+        }
+        else
+        {
+            loadKatakana();
+        }
+    }
+    else if(alphabet.size == 0 && !infinite)
+    {
+        location.reload();
+        //loadEndScreen();
+    }
+    else
+    {
+        getRandomCharacter();
+        document.getElementById("characterText").innerHTML = currentCharacter;
+        document.getElementById("userInput").reset();
+    }
+
+    
+}
+
+function onClick(button)
 {
     if(button == "Hirigana")
     {
         selectedAlphabet = "Hirigana";
-        document.getElementById(button).style.background = "#ff00ff";
+        document.getElementById(button).style.background = "#a6a6a6";
         document.getElementById("Katakana").style.background = "#c9c9c9";
     }
     else if(button == "Katakana")
     {
         selectedAlphabet = "Katakana";
-        document.getElementById(button).style.background = "#ff00ff";
+        document.getElementById(button).style.background = "#a6a6a6";
         document.getElementById("Hirigana").style.background = "#c9c9c9";
     }
     else if(button == "Infinite")
     {
         if(infinite)
         {
-            infinite = false; document.getElementById(button).style.background = "#c9c9c9";
+            infinite = false; 
+            document.getElementById(button).style.background = "#c9c9c9";
         }
         else
         {
-            infinite = true; document.getElementById(button).style.background = "#ff00ff";
+            infinite = true; 
+            document.getElementById(button).style.background = "#a6a6a6";
         }
     }
     else if(button == "OneLife")
     {
         if(oneLife){oneLife = false; document.getElementById(button).style.background = "#c9c9c9";}
-        else{oneLife = true; document.getElementById(button).style.background = "#ff00ff";}
+        else{oneLife = true; document.getElementById(button).style.background = "#a6a6a6";}
     }
     else if(button == "Dakuon")
     {
         if(dakuon){dakuon = false; document.getElementById(button).style.background = "#c9c9c9";}
-        else{dakuon = true; document.getElementById(button).style.background = "#ff00ff";}
-        toggleDakuon();
+        else{dakuon = true; document.getElementById(button).style.background = "#a6a6a6";}
     }
     else if(button == "StartButton")
     {
-        startTest();
+        if(selectedAlphabet != null)
+        {
+            startTest();
+        }
+        else{
+            document.getElementById('infoText').innerHTML = "Please select one of the alphabets";
+        }
+        
     }
-}
-
-function toggleDakuon()
-{
-
+    else if(button == "exitButton")
+    {
+        location.reload();
+    }
 }
 
 function startTest()
 {
-    document.getElementById("mainTitle").style.display = "none";
     document.getElementById("mainScreen").style.display = "none";
-
-    document.getElementById("testTitle").innerHTML = selectedAlphabet+" Test";
-    document.getElementById("testTitle").style.display = "block";
+    document.getElementById("title").innerHTML = selectedAlphabet+" Test";
     document.getElementById("testScreen").style.display = "block";
 
-    if(selectedAlphabet)
+    if(selectedAlphabet == "Hirigana")
     {
-
+        loadHirigana();
     }
     else
     {
-
+        loadKatakana();
     }
+    if(infinite)
+    {
+        maxScore = "∞";
+    }
+    else
+    {
+        maxScore = alphabet.size;   
+    }
+    document.getElementById("scoreText").innerHTML = "Score: "+ score +"/" + maxScore;
+    getRandomCharacter();
+    document.getElementById("characterText").innerHTML = currentCharacter;
 }
 
+function getRandomCharacter() {
+    let keys = Array.from(alphabet.keys());
+    currentCharacter = keys[Math.floor(Math.random() * keys.length)];
+}
