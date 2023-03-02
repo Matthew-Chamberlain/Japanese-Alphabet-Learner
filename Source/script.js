@@ -198,8 +198,6 @@ function loadKatakana()
 function checkAnswer()
 {
     let answer = document.querySelector('input').value;
-    console.log(answer);
-    console.log(alphabet.get(currentCharacter));
     if(answer == alphabet.get(currentCharacter))
     {
         score++;
@@ -208,7 +206,7 @@ function checkAnswer()
     }
     else
     {
-        if(oneLife){location.reload();}
+        if(oneLife){loadScoreScreen();}
         document.getElementById("correctText").innerHTML = "The correct answer was " + alphabet.get(currentCharacter);
     }
     alphabet.delete(currentCharacter);
@@ -226,8 +224,7 @@ function checkAnswer()
     }
     else if(alphabet.size == 0 && !infinite)
     {
-        location.reload();
-        //loadEndScreen();
+        loadScoreScreen();
     }
     else
     {
@@ -287,7 +284,7 @@ function onClick(button)
         }
         
     }
-    else if(button == "exitButton")
+    else if(button == "exitButton" || button == "finishQuiz")
     {
         location.reload();
     }
@@ -323,4 +320,13 @@ function startTest()
 function getRandomCharacter() {
     let keys = Array.from(alphabet.keys());
     currentCharacter = keys[Math.floor(Math.random() * keys.length)];
+}
+
+function loadScoreScreen()
+{
+        document.getElementById("testScreen").style.display = "none";
+        document.getElementById("title").style.display = "none";
+        document.getElementById("scoreScreen").style.display = "block";
+        document.getElementById("finalScore").style.display = "block";
+        document.getElementById("finalScore").innerHTML = "You got a score of " + score + " out of " + maxScore;
 }

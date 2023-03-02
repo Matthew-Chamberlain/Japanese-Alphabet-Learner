@@ -37,8 +37,12 @@
                     <input type="submit" hidden>
                 </form>
                 <div id ="correctText" class="infoText"></div>
-                <button id = "exitButton" class="startButton" onclick="onClick(this.id);" onmouseover="document.getElementById('infoText').innerHTML = 'Click to exit early';" onmouseleave="document.getElementById('infoText').innerHTML ='';">Exit Quiz</button>
+                <button id = "exitButton" class="startButton" onclick="onClick(this.id);">Exit Quiz</button>
             </div>
+        </div>
+        <div id="scoreScreen" class="container" style="display: none; margin-top: 25%;">
+            <div id="finalScore" class = "infoText"></div>
+            <button id="finishQuiz" class="startButton" onclick="onClick(this.id);">Back to main menu</button>
         </div>
     </body>
 </html>
