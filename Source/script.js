@@ -7,6 +7,7 @@ var userInput;
 var currentCharacter;
 var score = 0;
 var maxScore;
+var highestStreak = 0;
 
 function loadHirigana()
 {
@@ -208,13 +209,18 @@ function checkAnswer()
         }
         else
         {
-            document.getElementById("scoreText").innerHTML = "Streak: "+ score;
+            if(score > highestStreak){highestStreak = score;}
+            document.getElementById("scoreText").innerHTML = "Streak: "+ score + ", Highest Streak: " + highestStreak;
             document.getElementById("correctText").innerHTML = "";
         }
     }
     else
     {
-        if(infinite){score = 0; document.getElementById("scoreText").innerHTML = "Streak: "+ score;}
+        if(infinite)
+        {
+            score = 0; 
+            document.getElementById("scoreText").innerHTML = "Streak: "+ score + ", Highest Streak: " + highestStreak;
+        }
         if(oneLife){loadScoreScreen();}
         document.getElementById("correctText").innerHTML = "The correct answer was " + alphabet.get(currentCharacter);
     }
@@ -321,7 +327,7 @@ function startTest()
     {
         maxScore = alphabet.size;   
     }
-    if(infinite){document.getElementById("scoreText").innerHTML = "Streak: "+ score;}
+    if(infinite){document.getElementById("scoreText").innerHTML = "Streak: "+ score + ", Highest Streak: " + highestStreak;}
     else{document.getElementById("scoreText").innerHTML = "Score: "+ score +"/" + maxScore;}
     getRandomCharacter();
     document.getElementById("characterText").innerHTML = currentCharacter;
@@ -338,5 +344,7 @@ function loadScoreScreen()
         document.getElementById("title").style.display = "none";
         document.getElementById("scoreScreen").style.display = "block";
         document.getElementById("finalScore").style.display = "block";
-        document.getElementById("finalScore").innerHTML = "You got a score of " + score + " out of " + maxScore;
+        if(infinite){document.getElementById("finalScore").innerHTML = "You achieved a streak of " + score + " correct answers";}
+        else{document.getElementById("finalScore").innerHTML = "You got a score of " + score + " out of " + maxScore;}
+        
 }
