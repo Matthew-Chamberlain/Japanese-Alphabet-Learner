@@ -201,11 +201,20 @@ function checkAnswer()
     if(answer == alphabet.get(currentCharacter))
     {
         score++;
-        document.getElementById("scoreText").innerHTML = "Score: "+ score +"/" + maxScore;
-        document.getElementById("correctText").innerHTML = "";
+        if(!infinite)
+        {
+            document.getElementById("scoreText").innerHTML = "Score: "+ score +"/" + maxScore;
+            document.getElementById("correctText").innerHTML = "";
+        }
+        else
+        {
+            document.getElementById("scoreText").innerHTML = "Streak: "+ score;
+            document.getElementById("correctText").innerHTML = "";
+        }
     }
     else
     {
+        if(infinite){score = 0; document.getElementById("scoreText").innerHTML = "Streak: "+ score;}
         if(oneLife){loadScoreScreen();}
         document.getElementById("correctText").innerHTML = "The correct answer was " + alphabet.get(currentCharacter);
     }
@@ -312,7 +321,8 @@ function startTest()
     {
         maxScore = alphabet.size;   
     }
-    document.getElementById("scoreText").innerHTML = "Score: "+ score +"/" + maxScore;
+    if(infinite){document.getElementById("scoreText").innerHTML = "Streak: "+ score;}
+    else{document.getElementById("scoreText").innerHTML = "Score: "+ score +"/" + maxScore;}
     getRandomCharacter();
     document.getElementById("characterText").innerHTML = currentCharacter;
 }
