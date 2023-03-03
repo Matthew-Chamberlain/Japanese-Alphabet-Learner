@@ -24,6 +24,8 @@
                 <button id="OneLife" onclick="onClick(this.id)" onmouseover="document.getElementById('infoText').innerHTML = 'See how many correct answers you can get before making a mistake';" onmouseleave="document.getElementById('infoText').innerHTML =''">One Life</button>
                 <div></div>
                 <button id="Dakuon" onclick="onClick(this.id)" onmouseover="document.getElementById('infoText').innerHTML = 'Add Dakuon characters to the test';" onmouseleave="document.getElementById('infoText').innerHTML =''">Dakuon</button>
+                <div></div>
+                <button id="Youon" onclick="onClick(this.id)" onmouseover="document.getElementById('infoText').innerHTML = 'Add Yōon syllables to the test';" onmouseleave="document.getElementById('infoText').innerHTML =''">Yōon</button>
             </div>
             <button class="startButton" id="StartButton" onclick="onClick(this.id)">Start Test</button>
             <p id = "infoText" class="infoText"></p>
@@ -41,6 +43,7 @@
             </div>
         </div>
         <div id="scoreScreen" class="container" style="display: none; margin-top: 25%;">
+            <div id="oneLifeCorrectAnswer" class="infoText"></div>
             <div id="finalScore" class = "infoText"></div>
             <button id="finishQuiz" class="startButton" onclick="onClick(this.id);">Back to main menu</button>
         </div>

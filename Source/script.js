@@ -1,8 +1,9 @@
 const alphabet = new Map();
 var infinite = false;
 var oneLife = false;
-var selectedAlphabet;
 var dakuon = false;
+var youon = false;
+var selectedAlphabet;
 var userInput;
 var currentCharacter;
 var score = 0;
@@ -100,7 +101,56 @@ function loadHirigana()
         alphabet.set("ぺ","pe");
         alphabet.set("ぽ","po");
     }
-    console.log(alphabet.size);
+
+    if(youon)
+    {
+        alphabet.set("きゃ","kya");
+        alphabet.set("きゅ","kyu");
+        alphabet.set("きょ","kyo");
+
+        alphabet.set("しゃ","sha");
+        alphabet.set("しゅ","shu");
+        alphabet.set("しょ","sho");
+
+        alphabet.set("ちゃ","cha");
+        alphabet.set("ちゅ","chu");
+        alphabet.set("ちょ","cho");
+
+        alphabet.set("にゃ","nya");
+        alphabet.set("にゅ","nyu");
+        alphabet.set("にょ","nyo");
+
+        alphabet.set("ひゃ","hya");
+        alphabet.set("ひゅ","hyu");
+        alphabet.set("ひょ","hyo");
+
+        alphabet.set("みゃ","mya");
+        alphabet.set("みゅ","myu");
+        alphabet.set("みょ","myo");
+
+        alphabet.set("りゃ","rya");
+        alphabet.set("りゅ","ryu");
+        alphabet.set("りょ","ryo");
+    }
+
+    if(dakuon && youon)
+    {
+        alphabet.set("ぎゃ","gya");
+        alphabet.set("ぎゅ","gyu");
+        alphabet.set("ぎょ","gyo");
+
+        alphabet.set("じゃ","ja");
+        alphabet.set("じゅ","ju");
+        alphabet.set("じょ","jo");
+
+        alphabet.set("びゃ","bya");
+        alphabet.set("びゅ","byu");
+        alphabet.set("びょ","byo");
+
+        alphabet.set("ぴゃ","pya");
+        alphabet.set("ぴゅ","pyu");
+        alphabet.set("ぴょ","pyo");
+    }
 }
 
 function loadKatakana()
@@ -194,11 +244,63 @@ function loadKatakana()
         alphabet.set("ペ","pe");
         alphabet.set("ポ","po");
     }
+
+    if(youon)
+    {
+        alphabet.set("キャ","kya");
+        alphabet.set("キュ","kyu");
+        alphabet.set("キョ","kyo");
+
+        alphabet.set("シャ","sha");
+        alphabet.set("シュ","shu");
+        alphabet.set("ショ","sho");
+
+        alphabet.set("チャ","cha");
+        alphabet.set("チュ","chu");
+        alphabet.set("チョ","cho");
+        
+        alphabet.set("ニャ","nya");
+        alphabet.set("ニュ","nyu");
+        alphabet.set("ニョ","nyo");
+
+        alphabet.set("ヒャ","hya");
+        alphabet.set("ヒュ","hyu");
+        alphabet.set("ヒョ","hyo");
+
+        alphabet.set("ミャ","mya");
+        alphabet.set("ミュ","myu");
+        alphabet.set("ミョ","myo");
+
+        alphabet.set("リャ","rya");
+        alphabet.set("リュ","ryu");
+        alphabet.set("リョ","ryo");
+    }
+
+    if(dakuon && youon)
+    {
+        alphabet.set("ギャ","gya");
+        alphabet.set("ギュ","gyu");
+        alphabet.set("ギョ","gyo");
+
+        alphabet.set("ジャ","ja");
+        alphabet.set("ジュ","ju");
+        alphabet.set("ジョ","jo");
+
+        alphabet.set("ビャ","bya");
+        alphabet.set("ビュ","byu");
+        alphabet.set("ビョ","byo");
+
+        alphabet.set("ピャ","pya");
+        alphabet.set("ピュ","pyu");
+        alphabet.set("ピョ","pyo");
+    }
 }
 
 function checkAnswer()
 {
     let answer = document.querySelector('input').value;
+    answer = answer.toLowerCase();
+    if(answer == ""){return false;}
     if(answer == alphabet.get(currentCharacter))
     {
         score++;
@@ -216,12 +318,13 @@ function checkAnswer()
     }
     else
     {
+        if(oneLife){loadScoreScreen();}
         if(infinite)
         {
             score = 0; 
             document.getElementById("scoreText").innerHTML = "Streak: "+ score + ", Highest Streak: " + highestStreak;
         }
-        if(oneLife){loadScoreScreen();}
+        
         document.getElementById("correctText").innerHTML = "The correct answer was " + alphabet.get(currentCharacter);
     }
     alphabet.delete(currentCharacter);
@@ -288,6 +391,11 @@ function onClick(button)
         if(dakuon){dakuon = false; document.getElementById(button).style.background = "#c9c9c9";}
         else{dakuon = true; document.getElementById(button).style.background = "#a6a6a6";}
     }
+    else if(button == "Youon")
+    {
+        if(youon){youon = false; document.getElementById(button).style.background = "#c9c9c9";}
+        else{youon = true; document.getElementById(button).style.background = "#a6a6a6";}
+    }
     else if(button == "StartButton")
     {
         if(selectedAlphabet != null)
@@ -346,5 +454,6 @@ function loadScoreScreen()
         document.getElementById("finalScore").style.display = "block";
         if(infinite){document.getElementById("finalScore").innerHTML = "You achieved a streak of " + score + " correct answers";}
         else{document.getElementById("finalScore").innerHTML = "You got a score of " + score + " out of " + maxScore;}
+        if(oneLife){document.getElementById("oneLifeCorrectAnswer").innerHTML = "The correct answer was " + alphabet.get(currentCharacter);}
         
 }
