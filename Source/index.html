@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="script.js"></script>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Japanese Alphabet Learner</title>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="script.js"></script>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Japanese Alphabet Learner</title>
     
-</head>
+    </head>
     <body>
         <div id = "title" class="title" >Japanese Alphabet Learner</div>
         <div id = "mainScreen" class="container" >
@@ -26,6 +26,13 @@
                 <button id="Dakuon" onclick="onClick(this.id)" onmouseover="document.getElementById('infoText').innerHTML = 'Add Dakuon characters to the test';" onmouseleave="document.getElementById('infoText').innerHTML =''">Dakuon</button>
                 <div></div>
                 <button id="Youon" onclick="onClick(this.id)" onmouseover="document.getElementById('infoText').innerHTML = 'Add Yōon syllables to the test';" onmouseleave="document.getElementById('infoText').innerHTML =''">Yōon</button>
+            </div>
+            <div class="checkboxHolder" style="margin-top: 0.5rem;">
+                <button style="width: 20.6rem;"onClick="window.location.href='Hirigana.html';" onmouseover="document.getElementById('infoText').innerHTML = 'View the Hirigana chart';" onmouseleave="document.getElementById('infoText').innerHTML =''">View Hirigana</button>
+                <div></div>
+                <button style="width: 20.6rem;" onClick="window.location.href='Katakana.html';" onmouseover="document.getElementById('infoText').innerHTML = 'View the Katakana chart';" onmouseleave="document.getElementById('infoText').innerHTML =''">View Katakana</button>
+                <div></div>
+                <button style="width: 20.6rem;" onClick="window.location.href='Scores.html';" onmouseover="document.getElementById('infoText').innerHTML = 'View previous scores';" onmouseleave="document.getElementById('infoText').innerHTML =''">View Scores</button>
             </div>
             <button class="startButton" id="StartButton" onclick="onClick(this.id)">Start Test</button>
             <p id = "infoText" class="infoText"></p>
