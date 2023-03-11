@@ -356,68 +356,109 @@ function checkAnswer()
 
 function onClick(button)
 {
-    if(button == "Hirigana")
+    switch(button)
     {
-        selectedAlphabet = "Hirigana";
-        document.getElementById(button).style.background = "#a6a6a6";
-        document.getElementById("Katakana").style.background = "#c9c9c9";
-    }
-    else if(button == "Katakana")
-    {
-        selectedAlphabet = "Katakana";
-        document.getElementById(button).style.background = "#a6a6a6";
-        document.getElementById("Hirigana").style.background = "#c9c9c9";
-    }
-    else if(button == "Infinite")
-    {
-        if(infinite)
-        {
-            infinite = false; 
-            document.getElementById(button).style.background = "#c9c9c9";
-        }
-        else
-        {
-            infinite = true; 
+        case "Hirigana":
+            selectedAlphabet = "Hirigana";
             document.getElementById(button).style.background = "#a6a6a6";
-        }
-    }
-    else if(button == "OneLife")
-    {
-        if(oneLife){oneLife = false; document.getElementById(button).style.background = "#c9c9c9";}
-        else{oneLife = true; document.getElementById(button).style.background = "#a6a6a6";}
-    }
-    else if(button == "Dakuon")
-    {
-        if(dakuon){dakuon = false; document.getElementById(button).style.background = "#c9c9c9";}
-        else{dakuon = true; document.getElementById(button).style.background = "#a6a6a6";}
-    }
-    else if(button == "Youon")
-    {
-        if(youon){youon = false; document.getElementById(button).style.background = "#c9c9c9";}
-        else{youon = true; document.getElementById(button).style.background = "#a6a6a6";}
-    }
-    else if(button == "StartButton")
-    {
-        if(selectedAlphabet != null)
-        {
-            startTest();
-        }
-        else{
-            document.getElementById('infoText').innerHTML = "Please select one of the alphabets";
-        }
+            document.getElementById("Katakana").style.background = "#c9c9c9";
+            break;
         
-    }
-    else if(button == "exitButton" || button == "finishQuiz")
-    {
-        location.reload();
-    }
+        case "Katakana":
+            selectedAlphabet = "Katakana";
+            document.getElementById(button).style.background = "#a6a6a6";
+            document.getElementById("Hirigana").style.background = "#c9c9c9";
+            break;
+        
+        case "Infinite":
+            if(infinite)
+            {
+                infinite = false; 
+                document.getElementById(button).style.background = "#c9c9c9";
+            }
+            else
+            {
+                infinite = true; 
+                document.getElementById(button).style.background = "#a6a6a6";
+            }
+            break;
+
+        case "OneLife":
+            if(oneLife){oneLife = false; document.getElementById(button).style.background = "#c9c9c9";}
+            else{oneLife = true; document.getElementById(button).style.background = "#a6a6a6";}
+            break;
+
+        case "Dakuon":
+            if(dakuon){dakuon = false; document.getElementById(button).style.background = "#c9c9c9";}
+            else{dakuon = true; document.getElementById(button).style.background = "#a6a6a6";}
+            break;
+
+        case "Youon":
+            if(youon){youon = false; document.getElementById(button).style.background = "#c9c9c9";}
+            else{youon = true; document.getElementById(button).style.background = "#a6a6a6";}
+            break;
+        
+        case "StartButton":
+            if(selectedAlphabet != null)
+            {
+                startTest();
+            }
+            else{
+                document.getElementById('infoText').innerHTML = "Please select one of the alphabets";
+            }
+            break;
+
+        case "exitButton":
+            location.reload();
+            break;
+        
+        case "finishQuiz":
+            location.reload();
+            break;
+
+        case "HiriganaCharacters":
+            selectedAlphabet = "Hirigana";
+            document.getElementById(button).style.background = "#a6a6a6";
+            document.getElementById("KatakanaCharacters").style.background = "#c9c9c9";
+            break;
+
+        case "KatakanaCharacters":
+            selectedAlphabet = "Katakana";
+            document.getElementById(button).style.background = "#a6a6a6";
+            document.getElementById("HiriganaCharacters").style.background = "#c9c9c9";
+            break;
+
+        case "BasicCharacters":
+            document.getElementById(button).style.background = "#a6a6a6";
+            document.getElementById("DakuonCharacters").style.background = "#c9c9c9";
+            document.getElementById("YouonCharacters").style.background = "#c9c9c9";
+            document.getElementById("BasicHiriganaTable").style.display = "block";
+            document.getElementById("DakuonHiriganaTable").style.display = "none";
+            break;
+
+        case "DakuonCharacters":
+            document.getElementById(button).style.background = "#a6a6a6";
+            document.getElementById("BasicCharacters").style.background = "#c9c9c9";
+            document.getElementById("YouonCharacters").style.background = "#c9c9c9";
+            document.getElementById("BasicHiriganaTable").style.display = "none";
+            document.getElementById("DakuonHiriganaTable").style.display = "block";
+            
+            break;
+
+        case "YouonCharacters":
+            youon = true;
+            document.getElementById(button).style.background = "#a6a6a6";
+            document.getElementById("BasicCharacters").style.background = "#c9c9c9";
+            document.getElementById("DakuonCharacters").style.background = "#c9c9c9";
+            break;
+    }   
 }
 
 function startTest()
 {
     document.getElementById("mainScreen").style.display = "none";
-    document.getElementById("title").innerHTML = selectedAlphabet+" Test";
-    document.getElementById("testScreen").style.display = "block";
+    //document.getElementById("title").innerHTML = selectedAlphabet+" Test";
+    document.getElementById("testScreen").style.display = "flex";
 
     if(selectedAlphabet == "Hirigana")
     {
@@ -449,9 +490,9 @@ function getRandomCharacter() {
 function loadScoreScreen()
 {
         document.getElementById("testScreen").style.display = "none";
-        document.getElementById("title").style.display = "none";
-        document.getElementById("scoreScreen").style.display = "block";
-        document.getElementById("finalScore").style.display = "block";
+        //document.getElementById("title").style.display = "none";
+        document.getElementById("scoreScreen").style.display = "flex";
+        document.getElementById("finalScore").style.display = "flex";
         if(infinite){document.getElementById("finalScore").innerHTML = "You achieved a streak of " + score + " correct answers";}
         else{document.getElementById("finalScore").innerHTML = "You got a score of " + score + " out of " + maxScore;}
         if(oneLife){document.getElementById("oneLifeCorrectAnswer").innerHTML = "The correct answer was " + alphabet.get(currentCharacter);}

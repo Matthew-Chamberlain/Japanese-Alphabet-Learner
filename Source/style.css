@@ -4,108 +4,138 @@ html{
 
 body{
     background-color: #1f283a;
-    /*overflow: hidden;*/
+    overflow: hidden;
+    height: 100%;
+}
+
+button
+{
+    border: solid;
+    border-radius: 1rem;
+    border-color: white;
+    background-color: #c9c9c9;
+    font-weight: bold;
     text-align: center;
-    align-items: center;
 }
 
 .title{
     color: white;
-    font-size: 15rem;
-    padding-top: 0rem;
+    font-size: 7vw;
 }
 
 .container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     text-align: center;
+    width: 100vw;
+    height: 100vh;
 }
 
 .buttonHolder{
+    width: 35vw;
     display: flex;
     flex-direction: row;
-    padding: 3%;
-    padding-bottom: 2rem;
     justify-content: space-between;
-    flex: 0;
+    flex: 0.5;
 }
-
-.buttonHolder div{
-    width: 4rem;
-}
-
 .buttonHolder button{
-    font-weight: bold;
-    font-size: 20rem;
-    border: solid;
-    border-radius: 1rem;
-    border-color: white;
-    background-color: #c9c9c9;
-    padding: 5rem;
-    box-shadow: 0px 2rem 0px 0px #858585
+    font-size: 12vw;
+    box-shadow: 0px 1vw 0px 0px #858585;
+    width: 48%;
 }
 
 .label{
     text-align: center;
     font-weight: bold;
-    font-size: 4rem;
-    margin-top: -7rem;
+    font-size: 2vw;
+    margin-top: -7vh;
 }
 
 .checkboxHolder{
     display: flex;
     flex-direction: row;
     flex: 0;
-    margin-top: -3rem;
-    padding-bottom: 3rem;
+    margin-top: 3vh;
+    width: 35vw;
 }
 
 .checkboxHolder button{
     flex: 1;
-    border: solid;
-    border-radius: 1rem;
-    border-color: white;
-    background-color: #c9c9c9;
-    font-weight: bold;
-    font-size: 1.5rem;
-    width: 15rem;
-    padding: 2rem;
-    box-shadow: 0px 1.5rem 0px 0px #858585
+    font-size: 0.7vw;
+    width: 5.8vw;
+    height: 3vh;
+    box-shadow: 0px 0.5vw 0px 0px #858585
+}
+
+.pageButtons
+{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2vh;
+    width: 35vw;
+}
+
+.pageButtons button{
+    flex: 1;
+    font-size: 0.7vw;
+    width: 8vw;
+    height: 3vh;
+    box-shadow: 0px 0.5vw 0px 0px #858585;
 }
 
 .checkboxHolder div{
-    width: 1.7rem;
+    width: 0.8vw;
+}
+
+.pageButtons div{
+    width: 0.8vw;
 }
 
 .startButton{
-    border: solid;
-    border-radius: 1rem;
-    border-color: white;
-    background-color: #c9c9c9;
-    font-weight: bold;
-    font-size: 1.5rem;
-    width: 65rem;
-    padding: 2rem;
-    box-shadow: 0px 1.5rem 0px 0px #858585
+    font-size: 1vw;
+    margin-top: 2vh;
+    width: 35vw;
+    height: 4vh;
+    box-shadow: 0px 1vw 0px 0px #858585;
+    position: relative;
 }
 
 .infoText{
     color:  white;
-    font-size: 3rem;
+    font-size: 1.5vw;
     font-weight: 500;
-    margin-top: 3rem;
-    margin-bottom: 1rem;
+    flex: 0; 
+    margin-top: 70vh;
+    position: absolute;
 }
 
 button:hover{
     background-color: #bababa;
 }
 
-button:active{
-    transform: translateY(0.7rem);
-    box-shadow: 0rem 1rem 0px 0px #454545;
+.buttonHolder button:active{
+    transform: translateY(1vh);
+    box-shadow: 0rem 1vh 0px 0px #454545;
+}
+
+ button:active{
+    transform: translateY(0.5vh);
+    box-shadow: 0rem 0.7vh 0px 0px #454545;
+}
+
+.scoreText{
+    font-size: 3vw; 
+    font-weight: bolder; 
+    color: white
+}
+
+.characterText{
+    margin-top: -5vh;
+    font-size: 20vw; 
+    font-weight: bolder; 
+    color: white;
 }
 
 input
@@ -117,13 +147,38 @@ input
     border-bottom: 1rem solid white;
     text-align: center;
     color: white;
-    font-size: 5rem;
-    width: 25rem;
+    font-size: 3vw;
+    width: 20vw;
+}
+
+.tableContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.tableSelectors
+{
+    display: flex;
+    flex-direction: row;
+    flex: 0;
+    width: 35vw;
+}
+
+.tableSelectors button{
+    flex: 1;
+    font-size: 0.7vw;
+    width: 5.8vw;
+    height: 3vh;
+    box-shadow: 0px 0.5vw 0px 0px #858585
 }
 
 td
 {
-    padding: 2rem;
+    padding: 0.5vw;
 }
 
 td button
@@ -135,7 +190,7 @@ td button
     font-weight: bold;
     font-size: 1.5rem;
     width: 6rem;
-    padding: 0rem;
-    box-shadow: 0px 1.5rem 0px 0px #858585
+    box-shadow: 0px 1vh 0px 0px #858585
 }
+
 

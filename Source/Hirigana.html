@@ -2,15 +2,17 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="script.js"></script>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Hirigana Chart</title>
     </head>
-    <body>
-        <div>Hirigana Chart</div>
-        <div class="container">
-            <table>
+    <body onload="">
+        <div class="tableContainer">
+            <span class="tableSelectors" ><button id="HiriganaCharacters" onclick="onClick(this.id)">Hirigana</button><div></div><button id="KatakanaCharacters" onclick="onClick(this.id)">Katakana</button></span>
+            <span class="tableSelectors" ><button id="BasicCharacters" onclick="onClick(this.id)">Basic characters</button><div></div><button id="DakuonCharacters" onclick="onClick(this.id)">Dakuon</button><div></div><button id="YouonCharacters" onclick="onClick(this.id)">Yōon</button></span>
+            <table id="BasicHiriganaTable">
                 <tr>
                     <td><button>あ<br>a</button></td>
                     <td><button>い<br>i</button></td>
@@ -62,9 +64,9 @@
                 </tr>
                 <tr>
                     <td><button>や<br>ya</button></td>
-                    <td><div></div></td>
+                    <td></td>
                     <td><button>ゆ<br>yu</button></td>
-                    <td><div></div></td>
+                    <td></td>
                     <td><button>よ<br>yo</button></td>
                 </tr>
                 <tr>
@@ -76,17 +78,53 @@
                 </tr>
                 <tr>
                     <td><button>わ<br>wa</button></td>
-                    <td><div></div></td>
-                    <td><div></div></td>
-                    <td><div></div></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td><button>を<br>o</button></td>
                 </tr>
                 <tr>
                     <td><button>ん<br>n</button></td>
                 </tr>
             </table>
+            <table id="HiriganaDakuonTable" style="display: none;">
+                <tr>
+                    <td><button>ad<br>asdsa</button></td>
+                    <td><button><br></button></td>
+                    <td><button><br></button></td>
+                    <td><button><br></button></td>
+                    <td><button><br></button></td>
+                </tr>
+                <tr>
+                    <td><button><br></button></td>
+                    <td><button><br></button></td>
+                    <td><button><br></button></td>
+                    <td><button><br></button></td>
+                    <td><button><br></button></td>
+                </tr>
+                <tr>
+                    <td><button><br></button></td>
+                    <td><button><br></button></td>
+                    <td><button><br></button></td>
+                    <td><button><br></button></td>
+                    <td><button><br></button></td>
+                </tr>
+                <tr>
+                    <td><button><br></button></td>
+                    <td><button><br></button></td>
+                    <td><button><br></button></td>
+                    <td><button><br></br></button></td>
+                    <td><button><br></button></td>
+                </tr>
+                <tr>
+                    <td><button><br></button></td>
+                    <td><button><br></button></td>
+                    <td><button><br></button></td>
+                    <td><button><br></button></td>
+                    <td><button><br></button></td>
+                </tr>
+            </table>
         </div>
         
-        <div>Dakuon</div>
     </body>
 </html>
