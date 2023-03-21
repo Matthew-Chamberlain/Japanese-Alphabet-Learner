@@ -111,16 +111,12 @@ button
     position: absolute;
 }
 
-button:hover{
-    background-color: #bababa;
-}
-
 .buttonHolder button:active{
     transform: translateY(1vh);
     box-shadow: 0rem 1vh 0px 0px #454545;
 }
 
- button:active{
+button:active{
     transform: translateY(0.5vh);
     box-shadow: 0rem 0.7vh 0px 0px #454545;
 }
@@ -157,7 +153,7 @@ input
     align-items: center;
     text-align: center;
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
 }
 
 .tableSelectors
@@ -173,7 +169,18 @@ input
     font-size: 0.7vw;
     width: 5.8vw;
     height: 3vh;
-    box-shadow: 0px 0.5vw 0px 0px #858585
+    box-shadow: 0px 0.5vw 0px 0px #858585;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.tableSelectors button:active{
+    transform: translateY(0.5vh);
+    box-shadow: 0rem 0.7vh 0px 0px #454545;
+}
+
+table{
+    margin-top: 2vh;
 }
 
 td
@@ -191,6 +198,11 @@ td button
     font-size: 1.5rem;
     width: 6rem;
     box-shadow: 0px 1vh 0px 0px #858585
+}
+
+td button:hover
+{
+    background-color: #bababa;
 }
 
 

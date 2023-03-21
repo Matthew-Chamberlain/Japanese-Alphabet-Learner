@@ -13,24 +13,24 @@
         <!--<div id = "title" class="title" >Japanese Alphabet Learner</div>-->
         <div id = "mainScreen" class="container">
             <div class="buttonHolder">
-                <button id="Hirigana" onclick="onClick(this.id)" onmouseover="document.getElementById('infoText').innerHTML = 'See how many of the Hirigana Characters you know';" onmouseleave="document.getElementById('infoText').innerHTML =''">あ<br><p class="label">Hirigana</p></button>
-                <button id="Katakana" onclick="onClick(this.id)" onmouseover="document.getElementById('infoText').innerHTML = 'See how many of the Katakana Characters you know';" onmouseleave="document.getElementById('infoText').innerHTML =''">シ<br><p class="label">Katakana</p></button>
+                <button id="Hirigana" onclick="onClick(this.id)" onmouseover="onHover(this.id); document.getElementById('infoText').innerHTML = 'See how many of the Hirigana Characters you know';" onmouseleave="onLeave(this.id); document.getElementById('infoText').innerHTML =''">あ<br><p class="label">Hirigana</p></button>
+                <button id="Katakana" onclick="onClick(this.id)" onmouseover="onHover(this.id); document.getElementById('infoText').innerHTML = 'See how many of the Katakana Characters you know';" onmouseleave="onLeave(this.id); document.getElementById('infoText').innerHTML =''">シ<br><p class="label">Katakana</p></button>
             </div>
             <div class="checkboxHolder">
-                <button id="Infinite" onclick="onClick(this.id)" onmouseover="document.getElementById('infoText').innerHTML = 'Keep Going for as long as you want';" onmouseleave="document.getElementById('infoText').innerHTML =''">Infinite</button>
+                <button id="Infinite" onclick="onClick(this.id)" onmouseover="onHover(this.id); document.getElementById('infoText').innerHTML = 'Keep Going for as long as you want';" onmouseleave="onLeave(this.id); document.getElementById('infoText').innerHTML ='';">Infinite</button>
                 <div></div>
-                <button id="OneLife" onclick="onClick(this.id)" onmouseover="document.getElementById('infoText').innerHTML = 'See how many correct answers you can get before making a mistake';" onmouseleave="document.getElementById('infoText').innerHTML =''">One Life</button>
+                <button id="OneLife" onclick="onClick(this.id)" onmouseover="onHover(this.id); document.getElementById('infoText').innerHTML = 'See how many correct answers you can get before making a mistake';" onmouseleave="onLeave(this.id); document.getElementById('infoText').innerHTML =''">One Life</button>
                 <div></div>
-                <button id="Dakuon" onclick="onClick(this.id)" onmouseover="document.getElementById('infoText').innerHTML = 'Add Dakuon characters to the test';" onmouseleave="document.getElementById('infoText').innerHTML =''">Dakuon</button>
+                <button id="Dakuon" onclick="onClick(this.id)" onmouseover="onHover(this.id); document.getElementById('infoText').innerHTML = 'Add Dakuon characters to the test';" onmouseleave="onLeave(this.id); document.getElementById('infoText').innerHTML =''">Dakuon</button>
                 <div></div>
-                <button id="Youon" onclick="onClick(this.id)" onmouseover="document.getElementById('infoText').innerHTML = 'Add Yōon syllables to the test';" onmouseleave="document.getElementById('infoText').innerHTML =''">Yōon</button>
+                <button id="Youon" onclick="onClick(this.id)" onmouseover="onHover(this.id); document.getElementById('infoText').innerHTML = 'Add Yōon syllables to the test';" onmouseleave="onLeave(this.id); document.getElementById('infoText').innerHTML =''">Yōon</button>
             </div>
             <div class="pageButtons">
-                <button onClick="window.location.href='Hirigana.html';" onmouseover="document.getElementById('infoText').innerHTML = 'View the Hirigana chart';" onmouseleave="document.getElementById('infoText').innerHTML =''">View Hirigana</button>
+                <button id="alphabetPage" onClick="window.location.href='AlphabetCharts.html';" onmouseover="onHover(this.id); document.getElementById('infoText').innerHTML = 'View the Alphabet charts';" onmouseleave="onLeave(this.id); document.getElementById('infoText').innerHTML =''">View Alphabets</button>
                 <div></div>
-                <button  onClick="window.location.href='Scores.html';" onmouseover="document.getElementById('infoText').innerHTML = 'View previous scores';" onmouseleave="document.getElementById('infoText').innerHTML =''">View Scores</button>
+                <button id="scoresPage" onClick="window.location.href='Scores.html';" onmouseover="onHover(this.id); document.getElementById('infoText').innerHTML = 'View previous scores';" onmouseleave="onLeave(this.id); document.getElementById('infoText').innerHTML =''">View Scores</button>
             </div>
-            <button class="startButton" id="StartButton" onclick="onClick(this.id)">Start Test</button>
+            <button class="startButton" id="StartButton" onclick="onClick(this.id)" onmouseover="onHover(this.id)" onmouseleave="onLeave(this.id)">Start Test</button>
             <p id = "infoText" class="infoText"></p>
         </div>
         <div id = "testScreen" class="container" style="display: none;">
@@ -42,13 +42,13 @@
                 <input type="submit" hidden>
             </form>
             
-            <button id = "exitButton" class="startButton" onclick="onClick(this.id);" style="margin-top: 5vh;">Exit Quiz</button>
+            <button id = "exitButton" class="startButton" onclick="onClick(this.id);" onmouseover="onHover(this.id)" onmouseleave="onLeave(this.id)" style="margin-top: 5vh;">Exit Quiz</button>
             
         </div>
         <div id="scoreScreen" class="container" style="display: none;">
             <div id="oneLifeCorrectAnswer" class="infoText" style="margin-top: -18vh;"></div>
             <div id="finalScore" class = "infoText" style="margin-top: -10vh;"></div>
-            <button id="finishQuiz" class="startButton" onclick="onClick(this.id);">Back to main menu</button>
+            <button id="finishQuiz" class="startButton" onclick="onClick(this.id);" onmouseover="onHover(this.id)" onmouseleave="onLeave(this.id)">Back to main menu</button>
         </div>
     </body>
-</html>
+</html> 

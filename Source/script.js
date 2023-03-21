@@ -354,6 +354,25 @@ function checkAnswer()
     
 }
 
+function onHover(button)
+{
+    let colour = document.getElementById(button).style.background;
+    if(colour != "rgb(166, 166, 166)")
+    {
+        document.getElementById(button).style.background = "#bababa";
+    }
+}
+
+function onLeave(button)
+{
+    let colour = document.getElementById(button).style.background;
+    if(colour != "rgb(166, 166, 166)")
+    {
+        document.getElementById(button).style.background = "#c9c9c9";
+    }
+    
+}
+
 function onClick(button)
 {
     switch(button)
@@ -361,6 +380,7 @@ function onClick(button)
         case "Hirigana":
             selectedAlphabet = "Hirigana";
             document.getElementById(button).style.background = "#a6a6a6";
+            console.log(document.getElementById(button).style.background);
             document.getElementById("Katakana").style.background = "#c9c9c9";
             break;
         
@@ -420,36 +440,103 @@ function onClick(button)
             selectedAlphabet = "Hirigana";
             document.getElementById(button).style.background = "#a6a6a6";
             document.getElementById("KatakanaCharacters").style.background = "#c9c9c9";
+            if(dakuon)
+            {
+                document.getElementById("KatakanaDakuonTable").style.display = "none";
+                document.getElementById("HiriganaDakuonTable").style.display = "block";
+            }
+            else if(youon)
+            {
+                document.getElementById("KatakanaYouonTable").style.display = "none";
+                document.getElementById("HiriganaYouonTable").style.display = "block";
+            }
+            else if(!dakuon && !youon)
+            {
+                document.getElementById("BasicKatakanaTable").style.display = "none";
+                document.getElementById("BasicHiriganaTable").style.display = "block";
+            }
             break;
 
         case "KatakanaCharacters":
             selectedAlphabet = "Katakana";
             document.getElementById(button).style.background = "#a6a6a6";
             document.getElementById("HiriganaCharacters").style.background = "#c9c9c9";
+            if(dakuon)
+            {
+                document.getElementById("KatakanaDakuonTable").style.display = "block";
+                document.getElementById("HiriganaDakuonTable").style.display = "none";
+            }
+            else if(youon)
+            {
+                document.getElementById("KatakanaYouonTable").style.display = "block";
+                document.getElementById("HiriganaYouonTable").style.display = "none";
+            }
+            else if(!dakuon && !youon)
+            {
+                document.getElementById("BasicKatakanaTable").style.display = "block";
+                document.getElementById("BasicHiriganaTable").style.display = "none";
+            }
             break;
 
         case "BasicCharacters":
+            dakuon = false;
+            youon = false;
             document.getElementById(button).style.background = "#a6a6a6";
             document.getElementById("DakuonCharacters").style.background = "#c9c9c9";
             document.getElementById("YouonCharacters").style.background = "#c9c9c9";
-            document.getElementById("BasicHiriganaTable").style.display = "block";
-            document.getElementById("DakuonHiriganaTable").style.display = "none";
+            if(selectedAlphabet == "Hirigana")
+            {
+                document.getElementById("BasicHiriganaTable").style.display = "block";
+                document.getElementById("HiriganaDakuonTable").style.display = "none";
+                document.getElementById("HiriganaYouonTable").style.display = "none";
+            }
+            else if(selectedAlphabet == "Katakana")
+            {
+                document.getElementById("BasicKatakanaTable").style.display = "block";
+                document.getElementById("KatakanaDakuonTable").style.display = "none";
+                document.getElementById("KatakanaYouonTable").style.display = "none";
+            }
             break;
 
         case "DakuonCharacters":
+            dakuon = true;
+            youon = false;
             document.getElementById(button).style.background = "#a6a6a6";
             document.getElementById("BasicCharacters").style.background = "#c9c9c9";
             document.getElementById("YouonCharacters").style.background = "#c9c9c9";
-            document.getElementById("BasicHiriganaTable").style.display = "none";
-            document.getElementById("DakuonHiriganaTable").style.display = "block";
+            if(selectedAlphabet == "Hirigana")
+            {
+                document.getElementById("BasicHiriganaTable").style.display = "none";
+                document.getElementById("HiriganaDakuonTable").style.display = "block";
+                document.getElementById("HiriganaYouonTable").style.display = "none";
+            }
+            else if(selectedAlphabet == "Katakana")
+            {
+                document.getElementById("BasicKatakanaTable").style.display = "none";
+                document.getElementById("KatakanaDakuonTable").style.display = "block";
+                document.getElementById("KatakanaYouonTable").style.display = "none";
+            }
             
             break;
 
         case "YouonCharacters":
             youon = true;
+            dakuon = false;
             document.getElementById(button).style.background = "#a6a6a6";
             document.getElementById("BasicCharacters").style.background = "#c9c9c9";
             document.getElementById("DakuonCharacters").style.background = "#c9c9c9";
+            if(selectedAlphabet == "Hirigana")
+            {
+                document.getElementById("BasicHiriganaTable").style.display = "none";
+                document.getElementById("HiriganaDakuonTable").style.display = "none";
+                document.getElementById("HiriganaYouonTable").style.display = "block";
+            }
+            else if(selectedAlphabet == "Katakana")
+            {
+                document.getElementById("BasicKatakanaTable").style.display = "none";
+                document.getElementById("KatakanaDakuonTable").style.display = "none";
+                document.getElementById("KatakanaYouonTable").style.display = "block";
+            }
             break;
     }   
 }
@@ -498,3 +585,11 @@ function loadScoreScreen()
         if(oneLife){document.getElementById("oneLifeCorrectAnswer").innerHTML = "The correct answer was " + alphabet.get(currentCharacter);}
         
 }
+
+function loadAlphabetChart()
+{
+    document.getElementById("HiriganaCharacters").style.background = "#a6a6a6";
+    document.getElementById("BasicCharacters").style.background = "#a6a6a6";
+    selectedAlphabet = "Hirigana";
+}
+
